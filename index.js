@@ -11,6 +11,10 @@ app.use(cors());
 
 mongoose.connect(url, {dbName: 'kanban'});
 
+requireDir('./models');
+
+app.use('/api', require('./routes'));  
+
 app.listen(3000, () => {
     console.log("Aplicativo ouvindo a porta 3000");
 });
