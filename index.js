@@ -1,15 +1,16 @@
 const express = require('express');
 const requireDir = require('require-dir');
 const app = express();
-const mongoose = require('mongoose');
-const url = "mongodb://127.0.0.1:27017";
 const cors = require('cors');
+const db = require('./src/db')
 
 app.use(express.json());
 
 app.use(cors());
 
-mongoose.connect(url, {dbName: 'kanban'});
+db.sync().then(() => {
+    console.log(`Banco de dados conectado: ${process.env.DB_NAME}`);
+});
 
 requireDir('./models');
 
