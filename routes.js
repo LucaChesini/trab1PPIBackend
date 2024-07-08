@@ -2,6 +2,7 @@ const express = require("express");
 const CardController = require("./controllers/CardController");
 const UsuarioController = require("./controllers/UsuarioController");
 const routes = express.Router();
+const authenticateJWT = require('./middleware/authenticateJWT');
 
 routes.get('/cards', CardController.findAll);
 routes.post('/cards', CardController.store);

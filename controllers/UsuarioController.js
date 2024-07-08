@@ -42,5 +42,13 @@ module.exports = {
         } catch (err) {
             return res.status(400).json({ error: err.message });
         }
+    },
+    async authenticate(nome, senha) {
+        try {
+            const usuario = await Usuario.findOne({ where: { nome, senha } });
+            return usuario;
+        } catch (err) {
+            throw new Error(err.message);
+        }
     }
 }
