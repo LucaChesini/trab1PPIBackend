@@ -25,7 +25,7 @@ app.post('/api/login', async (req, res) => {
     try {
         const usuario = await UsuarioController.authenticate(nome, senha);
         if (usuario) {
-            const accessToken = jwt.sign({ nome: usuario.nome, role: usuario.role }, accessTokenSecret);
+            const accessToken = jwt.sign({ nome: usuario.nome, role: usuario.role }, accessTokenSecret, {expiresIn: '1h'});
             res.json({ accessToken });
         } else {
             res.status(401).send('Nome de usuário ou senha incorretos');
