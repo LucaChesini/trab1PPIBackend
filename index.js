@@ -12,7 +12,7 @@ app.use(express.json());
 
 app.use(cors());
 
-db.sync().then(() => {
+db.authenticate().then(() => {
     console.log(`Banco de dados conectado: ${process.env.DB_NAME}`);
 });
 
