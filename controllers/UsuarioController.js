@@ -19,6 +19,7 @@ module.exports = {
     },
     async store(req, res) {
         try {
+            req.body.role = 'user';
             const usuario = await Usuario.create(req.body);
             return res.json(usuario);
         } catch (err) {

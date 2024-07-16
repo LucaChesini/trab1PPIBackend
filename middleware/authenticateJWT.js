@@ -17,4 +17,11 @@ const authenticateJWT = (req, res, next) => {
     }
 };
 
-module.exports = authenticateJWT;
+const authorizeAdmin = (req, res, next) => {
+    if (req.usuario.role !== 'admin') {
+        return res.sendStatus(403);
+    }
+    next();
+};
+
+module.exports = {authenticateJWT, authorizeAdmin};
