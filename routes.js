@@ -4,11 +4,11 @@ const UsuarioController = require("./controllers/UsuarioController");
 const routes = express.Router();
 const authenticateJWT = require('./middleware/authenticateJWT');
 
-routes.get('/cards', CardController.findAll);
-routes.post('/cards', CardController.store);
-routes.get('/cards/:id', CardController.show);
-routes.put('/cards/:id', CardController.update);
-routes.delete('/cards/:id', CardController.destroy);
+routes.get('/cards', authenticateJWT, CardController.findAll);
+routes.post('/cards', authenticateJWT, CardController.store);
+routes.get('/cards/:id', authenticateJWT, CardController.show);
+routes.put('/cards/:id', authenticateJWT, CardController.update);
+routes.delete('/cards/:id', authenticateJWT, CardController.destroy);
 
 routes.get('/usuarios', UsuarioController.findAll);
 routes.post('/usuarios', UsuarioController.store);
