@@ -1,3 +1,4 @@
 node_modules/
 teste.http
 .env
+config/
