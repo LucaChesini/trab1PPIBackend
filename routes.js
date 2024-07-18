@@ -10,7 +10,7 @@ routes.get('/cards/:id', authenticateJWT, CardController.show);
 routes.put('/cards/:id', authenticateJWT, CardController.update);
 routes.delete('/cards/:id', authenticateJWT, CardController.destroy);
 
-routes.get('/usuarios', UsuarioController.findAll);
+routes.get('/usuarios', authenticateJWT, authorizeAdmin, UsuarioController.findAll);
 routes.post('/usuarios', UsuarioController.store);
 routes.get('/usuarios/:id', UsuarioController.show);
 routes.put('/usuarios/:id', UsuarioController.update);
